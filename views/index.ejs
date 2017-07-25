@@ -1,11 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="javascripts/angular.js"></script>
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
-  <body>
+  <body ng-app="myapp" ng-controller="controller">
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
+    <form ng-submit="submit()" method="post">
+      First name:<input type="text" ng-model="fn" required><br>
+      Last name: <input type="text" ng-model="ln" required><br>
+      age:       <input type="number" ng-model="age" required><br>
+      mail:      <input type="email" ng-model="mail" required><br>
+      <button type="submit">Publish</button>
+    </form>
   </body>
 </html>
