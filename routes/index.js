@@ -13,16 +13,20 @@ router.post('/msg',function (req,res) {
 
     console.log("entered in post method");
     o2={
-        fi:req.body.firstName,
-        li:req.body.lastName
+        FirstName:req.body.firstName,
+        LastName:req.body.lastName,
+        Age:req.body.Age,
+        Email:req.body.Email
     };
+   // var ch=["ch1","ch2"];
     //we cant pass an object in publish method so we have to convert it into string and pass it
-   var a= JSON.stringify(req.body);//req.body contains all the data of the user
-        client.publish("test",a,function (err,reply) {
-            console.log("reply " + reply);
+   var a= JSON.stringify(o2);
+   console.log(req.body.channel);//req.body contains all the data of the user
+
+        client.publish(req.body.channel,a,function (err,reply) {
+            console.log("reply--> " + reply);
         });
         //client.publish("hai","second");
-
 });
 client.on('connect',function () {
     console.log('connected successfully');
@@ -55,12 +59,12 @@ client.select(2,function (err,reply) {
 });
 
 
-
+/*
 client.publish("test","firstMsg",function (err,reply) {
     console.log("reply " + reply);
 });
 
 
 
-client.publish("hai","second");
+client.publish("hai","second");*/
 module.exports = router;

@@ -10,10 +10,12 @@
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
     <form ng-submit="submit()" method="post">
+      Select Channel:<select ng-model="selectedName" ng-options="x for x in channels"></select>
       First name:<input type="text" ng-model="fn" required><br>
       Last name: <input type="text" ng-model="ln" required><br>
       age:       <input type="number" ng-model="age" required><br>
       mail:      <input type="email" ng-model="mail" required><br>
+
       <button type="submit">Publish</button>
     </form>
   </body>
